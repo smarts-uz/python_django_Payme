@@ -11,6 +11,7 @@ class MerchatTransactionsModel(models.Model):
     MerchatTransactionsModel class \
         That's used for managing transactions in database.
     """
+
     _id = models.CharField(max_length=255, null=True, blank=False)
     transaction_id = models.CharField(max_length=255, null=True, blank=False)
     order_id = models.BigIntegerField(null=True, blank=True)
@@ -35,7 +36,7 @@ try:
         raise TypeError("The input must be an instance of models.Model class")
 
     # pylint: disable=protected-access
-    if 'amount' not in [f.name for f in CUSTOM_ORDER._meta.fields]:
+    if "amount" not in [f.name for f in CUSTOM_ORDER._meta.fields]:
         raise FieldError("Missing 'amount' field in your custom order model")
 
     Order = CUSTOM_ORDER
@@ -49,6 +50,7 @@ except (ImportError, AttributeError):
         Order class \
             That's used for managing order process
         """
+
         amount = models.IntegerField(null=True, blank=True)
         created_at = models.DateTimeField(auto_now_add=True)
         updated_at = models.DateTimeField(auto_now=True)
